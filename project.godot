@@ -8,6 +8,52 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet_Game",
+"language": "GDScript",
+"path": "res://actor/Bullet/Bullet.gd"
+}, {
+"base": "Area2D",
+"class": "Duck_Base",
+"language": "GDScript",
+"path": "res://actor/Enemy/Duck.gd"
+}, {
+"base": "Duck_Base",
+"class": "FlyingDuck",
+"language": "GDScript",
+"path": "res://actor/Enemy/Duck_Flying.gd"
+}, {
+"base": "CanvasLayer",
+"class": "GameUI",
+"language": "GDScript",
+"path": "res://UI/GameUI.gd"
+}, {
+"base": "CanvasLayer",
+"class": "MainUI",
+"language": "GDScript",
+"path": "res://UI/MainUI.gd"
+}, {
+"base": "Area2D",
+"class": "Player_Sentry",
+"language": "GDScript",
+"path": "res://actor/Player/Sentry.gd"
+}, {
+"base": "Duck_Base",
+"class": "WalkingDuck",
+"language": "GDScript",
+"path": "res://actor/Enemy/Duck_Walking.gd"
+} ]
+_global_script_class_icons={
+"Bullet_Game": "",
+"Duck_Base": "",
+"FlyingDuck": "",
+"GameUI": "",
+"MainUI": "",
+"Player_Sentry": "",
+"WalkingDuck": ""
+}
+
 [application]
 
 config/name="LD55_Metagen"
@@ -30,6 +76,7 @@ common/drop_mouse_on_gui_input_disabled=true
 2d_physics/layer_1="Platform"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="MyObject"
+2d_physics/layer_4="Bullet"
 
 [physics]
 

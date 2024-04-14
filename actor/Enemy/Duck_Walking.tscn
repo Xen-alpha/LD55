@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://media/sprite/Duck_Normal.png" type="Texture" id=1]
-[ext_resource path="res://actor/Enemy/Duck.gd" type="Script" id=2]
+[ext_resource path="res://actor/Enemy/Duck_Walking.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 18, 22.5 )
+extents = Vector2( 30.5, 28 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -27,14 +27,15 @@ animations = [ {
 [node name="EnemyCollision" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
+input_pickable = false
+gravity = 0.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -8, 9.5 )
+position = Vector2( -0.5, 9 )
 shape = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
 playing = true
-
-[connection signal="area_entered" from="." to="." method="_on_EnemyCollision_area_entered"]

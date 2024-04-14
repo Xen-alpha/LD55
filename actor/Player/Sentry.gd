@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name Player_Sentry
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -54,4 +54,3 @@ func _process(delta):
 		position.x = 640 - 1
 		speed.x *= -1
 		acceleration.x = 0
-	

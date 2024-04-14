@@ -1,3 +1,4 @@
+class_name Duck_Base
 extends Area2D
 
 
@@ -5,29 +6,19 @@ extends Area2D
 # var a = 2
 # var b = "text"
 var speed = 16.0
-var offset = 0
-
 var health = 1
 
-var startpoint
-
-var endpoint = Vector2(320,320)
+var id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	id = get_instance_id()
 
-func initStat(pos:Vector2, healthpoint):
+func initStat(pos:Vector2, healthpoint:int, speed_init:int):
 	position = pos
 	health = healthpoint
+	speed = speed_init
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if is_queued_for_deletion():
-		return
-	position = position.move_toward(endpoint, delta* speed)
-
-
-
-func _on_EnemyCollision_area_entered(area):
-	pass # Replace with function body.
+#func _process(delta):
+#	pass

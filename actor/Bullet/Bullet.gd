@@ -1,9 +1,12 @@
+class_name Bullet_Game
 extends Area2D
 
-
+signal hit(id, dmg)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var enabled = false
+var captured = false
 
 var direction = Vector2(0,0)
 
@@ -18,12 +21,13 @@ func LaunchBullet(parm1:Vector2):
 func _process(delta):
 	if is_queued_for_deletion():
 		return
-	position += direction
+	if enabled == false:
+		return
+	position += direction * delta * 640
 
 
 func _on_Bullet_area_entered(area):
-	if area.name == "EnemyCollsion":
-		area.health -= 1
-		if area.health <= 0:
-			area.queue_free()
-		queue_free()
+	if enabled:
+		if area is Duck_Base:
+			emit_signal("hit", area.get_instance_id(), 1)
+			queue_free()

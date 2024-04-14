@@ -7,8 +7,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var level = load("res://map/Stage1.tscn").instance()
+	var level = load("res://UI/MainUI.tscn").instance()
 	add_child(level)
+	var bgm = load("res://media/sound/BGM.tscn").instance()
+	add_child(bgm)
 	# pass # Replace with function body.
 
 
