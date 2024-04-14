@@ -23,7 +23,7 @@ func _process(delta):
 		return
 	if enabled == false:
 		return
-	position += direction * delta * 640
+	position += direction * delta * 1280
 
 
 func _on_Bullet_area_entered(area):

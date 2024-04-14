@@ -57,7 +57,9 @@ _global_script_class_icons={
 [application]
 
 config/name="LD55_Metagen"
-config/description="Ludum Dare 55 Entry"
+config/description="Ludum Dare 55 Entry
+Duck Invasion
+2024, Metagen(Maniac Xena)"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
