@@ -48,6 +48,39 @@ func _input(event):
 				bullet_elem.position = player.position
 				player.get_node("BulletHolder").remove_child(bullet)
 				add_child(bullet)
+	elif event is InputEventJoypadButton:
+		var event_btn = event as InputEventJoypadButton
+		var player = get_node_or_null("Player") as Player_Sentry
+		if player == null:
+			return
+		if event_btn.button_index == JOY_R2: # 2nd right trigger
+			var bullet_list = player.get_overlapping_areas()
+			for elem in bullet_list:
+				if elem is Bullet_Game and elem.captured == false:
+					var elem_bullet = elem as Bullet_Game
+					get_node("GunHolder").remove_child(elem)
+					player.get_node("BulletHolder").add_child(elem)
+					elem.position = elem_bullet.position - player.position
+					elem.captured = true
+		if event_btn.button_index == JOY_R: # first right trigger
+			var bullet_list = player.get_node("BulletHolder").get_children()
+			for bullet in bullet_list:
+				var bullet_elem = bullet as Bullet_Game
+				var diff = Vector2(0,0)
+				if Input.is_joy_known(0) and (Input.is_action_pressed("joy_left") or Input.is_action_pressed("joy_right") or Input.is_action_pressed("joy_up") or Input.is_action_pressed("joy_down")):
+					var axis_x = 0
+					axis_x = Input.get_joy_axis(0,JOY_AXIS_2)
+					var axis_y = 0
+					axis_y = Input.get_joy_axis(0,JOY_AXIS_3)
+					diff = Vector2(axis_x, axis_y)
+				else:
+					var mouse_pos = get_global_mouse_position()
+					diff = mouse_pos - player.position
+				bullet_elem.direction = diff.normalized()
+				bullet_elem.enabled = true
+				bullet_elem.position = player.position
+				player.get_node("BulletHolder").remove_child(bullet)
+				add_child(bullet)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

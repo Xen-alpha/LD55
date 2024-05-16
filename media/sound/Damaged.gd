@@ -16,6 +16,6 @@ func _ready():
 #	pass
 
 
-func _on_AudioStreamPlayer2D_finished():
+func _on_AudioStreamPlayer_finished():
 	stop()
 	queue_free()
